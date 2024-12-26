@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal Portfolio Website">
+    <title>DENG, King Ho | Portfolio</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Temporary inline CSS for quick draft */
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        header {
+            position: relative;
+            background-image: url("https://upload.wikimedia.org/wikipedia/commons/1/18/HKUST_campus_view_looking_from_above.jpg");
+            background-size: cover; /* Ensures the image covers the entire header */
+            background-position: center; /* Centers the image */
+            background-repeat: no-repeat; /* Prevents the image from repeating */
+            color: white;
+            text-align: center;
+            padding: 8rem 0 2rem;
+        }
+
+        header::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent overlay */
+            z-index: 1;
+        }
+        
+        header h1 {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        position: relative;
+        margin-bottom: 0.5rem; /* Reduces space below the name */
+        z-index: 2; /* Keeps the text above the overlay */
+        }
+
+        header p {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        position: relative;
+        margin-top: 0%;/* Reduces space below the name */
+        margin-bottom: 0rem; /* Reduces space below the name */
+        z-index: 2; /* Keeps the text above the overlay */
+        }
+
+        /* Profile picture styles */
+        .profile-pic {
+            position: absolute;
+            top: 20px; /* Adjusts position above the text */
+            left: 50%;
+            transform: translateX(-50%); /* Centers the picture horizontally */
+            width: 120px; /* Adjust size */
+            height: 120px;
+            border-radius: 50%; /* Makes the image a circle */
+            border: 4px solid white; /* Optional: Adds a white border */
+            object-fit: cover; /* Ensures the image scales properly */
+            z-index: 2; /* Keeps the picture above the overlay */margin-bottom: 1rem; /* Adds space below the image */
+        }
+
+        .profile-pic:hover {
+        transform: translateX(-50%) scale(1.1);
+        transition: transform 0.5s ease;
+        }
+
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1rem 0;
+            background-color: #333;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 2rem 1rem;
+            background-color: #e8f5e9;
+        }
+
+        .hero h1 {
+            margin: 0;
+        }
+
+        .section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: linear-gradient(to right, #ffffff, #f3f4f6);
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e3e3e3;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }       
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .experience-container {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        }
+
+        .experience-card {
+            padding: 1.5rem;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-card h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .experience-card p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .experience-card ul {
+            margin: 0;
+            padding-left: 1.5rem;
+            list-style-type: disc;
+        }
+
+        .experience-card li {
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+
+        /* Awards List */
+        .awards-list {
+            list-style-type: none; /* Remove default bullets */
+            padding: 0; /* Remove padding */
+            margin: 0; /* Remove margin */
+        }
+
+        .awards-list li {
+            margin-bottom: 1.5rem; /* Space between award items */
+            line-height: 1.6; /* Better readability */
+        }
+
+        /* Skills Section */
+        .skills-container {
+            display: grid; /* Use grid for layout */
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive columns */
+            gap: 1.5rem; /* Space between skill cards */
+        }
+
+        .skill {
+            padding: 1rem;
+            background-color: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill h3 {
+            margin-bottom: 0.5rem; /* Space below the skill title */
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .skill p {
+            margin: 0;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background-color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #333;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <img src="https://media.licdn.com/dms/image/v2/D5603AQHzDMS8tXD8GQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1730170164478?e=1740614400&v=beta&t=w455DRd1LpiLnjd0o9YnPRsByBCM95UfZb8GLPJtk8k" alt="Your Picture" class="profile-pic">
+        <h1>DENG, King Ho</h1>
+        <p>Aspiring AI Developer | Problem Solver | Learner</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <!-- <a href="#portfolio">Portfolio</a> -->
+        <a href="#awards">Awards</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+        
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Welcome to My Personal Website</h1>
+        <p>Discover my journey in programming, projects I've worked on, and how to connect with me.</p>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <h2>About Me</h2>
+        <p>Hi there! I'm Aatrox, a penultimate student at HKUST studying Computer Science. When I'm not coding, you can find me exploring the latest trends in technology or diving into a new book.</p>
+
+        <p>I'm passionate about programming and love creating impactful solutions, especially in Machine Learning and LLM. One of my favorite projects involved developing a model that leverages up-to-date informaiton to generate insightful responses.</p>
+            
+        <p>I believe that technology can change lives, and I'm excited to be part of that change! If you'd like to chat about tech, projects, or just want to say hi, feel free to reach out!</p>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <h2>Experience</h2>
+        <div class="experience-container">
+            <div class="experience-card">
+                <h3>Data Scientist Intern</h3>
+                <p><strong> Super Cat Technology Limited</strong> - [Kowloon Bay, Kowloon]</p>
+                <p><em>June 2024 - August 2024</em></p>
+                <ul>
+                    <li>Improved the accuracy of Multimodal Large Language Models by 25% through fine-tuning low-rank adapters 
+                        for AI frameworks using Python and LangChain.</li>
+                    <li>Enhanced multi-agent systems, leading to a 60% reduction in processing time for key workflows.</li>
+                </ul>
+            </div>
+
+            <div class="experience-card">
+                <h3>Research and Development Specialist (Part-time)</h3>
+                <p><strong>ONYX IDS</strong> - [HKUST, Kowloon]</p>
+                <p><em>January 2024 - June 2024</em></p>
+                <ul>
+                    <li>Applied machine learning tools in sports analytics, resulting in an 80% prediction accuracy for player action 
+                        recognition.</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Student Teaching Assistant</h3>
+                <p><strong> HKUST USEL Lab  </strong> - [HKUST USEL Lab, Kowloon]</p>
+                <p><em>September 2023 - December 2023</em></p>
+                <ul>
+                    <li>Assisted in teaching Arduino and drone technologies to 40+ students.</li>
+                </ul>
+            </div>
+            <div class="experience-card">
+                <h3>Data Scientist Intern</h3>
+                <p><strong> AIGC Algorithm Engineer (Intern), Shenzhen Maidong Robotics Technology Co., Ltd.</strong> - [Shenzhen, Mainland China]</p>
+                <p><em>August 2023</em></p>
+                <ul>
+                    <li>Employed body segmentation techniques to enhance movement recognition and classification. </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <!-- <section id="portfolio" class="section">
+        <h2>Portfolio</h2>
+        <div class="projects">
+            <div class="project-card">
+                <h3>Project 1</h3>
+                <p>A brief description of the project. Technologies used: HTML, CSS, JavaScript.</p>
+                <a href="https://github.com/username/project1" target="_blank">GitHub Link</a>
+            </div>
+            <div class="project-card">
+                <h3>Project 2</h3>
+                <p>A brief description of the project. Technologies used: React, Node.js.</p>
+                <a href="https://github.com/username/project2" target="_blank">GitHub Link</a>
+            </div>
+        </div>
+    </section> -->
+
+        <!-- Awards Section -->
+    <section id="awards" class="section">
+        <h2>Awards</h2>
+        <ul class="awards-list">
+            <li>
+                <strong>The Joseph Lau Luen Hung Charitable Trust Scholarship</strong> - 2023<br>
+                Recognized for demonstrating great academic performance, a strong commitment to community service, and well-rounded development including proficiency in language and participation in extra-curricular activities.
+            </li>
+            <li>
+                <strong>Winner, HKUST Sustainable Campus Student Competition</strong> - 2022<br>
+                Won both Campus Project Competition and Innovative Solution Competition for investigating a re-blending method for paper waste.
+            </li>
+            <li>
+                <strong>Dean's List</strong> - 2022<br>
+                Acknowledged for academic excellence in Computer Science at HKUST.
+            </li>
+            <li>
+                <strong>Best Design, World Educational Robot Contest</strong> - 2021<br>
+                Recognized for the most innovative and aesthetically pleasing robot.
+            </li>
+        </ul>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <h2>Skills</h2>
+        <div class="skills-container">
+            <div class="skill">
+                <h3>Programming Languages</h3>
+                <p>Python, C++, R</p>
+            </div>
+            <div class="skill">
+                <h3>Web Development</h3>
+                <p>HTML, CSS</p>
+            </div>
+            <div class="skill">
+                <h3>Machine Learning</h3>
+                <p>TensorFlow, PyTorch, Scikit-learn</p>
+            </div>
+            <div class="skill">
+                <h3>Tools & Platforms</h3>
+                <p>Git, GitHub, Linux</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <h2>Contact</h2>
+        <p>Email: <a href="khdeng@connect.ust.hk">khdeng@connect.ust.hk</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/king-ho-deng-8741a5278/" target="_blank">linkedin.com/in/king-ho-deng</a></p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 DENG, King Ho. All Rights Reserved.</p>
+    </footer>
+</body>
+
+</html>
